@@ -18,8 +18,5 @@ tasks_list = [
 # Running the EDF scheduler from EDF module
 edf_scheduler(tasks_list)
 
-# Printing the schedule using the print module
-print_schedule(tasks_list)
-
 # Visualizing the schedule using the visualize module
 visualize_schedule(tasks_list)
