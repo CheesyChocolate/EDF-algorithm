@@ -1,5 +1,4 @@
 from module.EDF import edf_scheduler
-from module.visualize import print_schedule
 from module.visualize import visualize_schedule
 
 # 2D array: [task_name, arrival_time, execution_time, deadline, completion_time]
