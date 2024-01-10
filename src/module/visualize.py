@@ -1,25 +1,24 @@
-def print_schedule(schedule):
-    print("Scheduled Tasks:")
-    for task, start_time in schedule:
-        print(f"Task {task} starts at time {start_time}")
+def print_schedule(tasks_list):
+    for task in tasks_list:
+        print(f"Task: {task[0]}, Completion Time: {task[4] if len(task) > 4 else 'Not Completed'}")
 
 
-import matplotlib.pyplot as plt
+def visualize_schedule(tasks):
+    import matplotlib.pyplot as plt
 
-def visualize_schedule(schedule):
     fig, ax = plt.subplots()
 
-    y_ticks = []
-    task_labels = []
+    for i, task in enumerate(tasks):
+        task_name = task[0]
+        arrival_time = task[1]
+        execution_time = task[2]
+        completion_time = task[4]
 
-    for i, (task_name, start_time) in enumerate(schedule):
-        ax.barh(i, start_time, color='b', align='center')
-        task_labels.append(f'Task {task_name}')
+        ax.barh(task_name, width=completion_time - arrival_time, left=arrival_time, label=f'Task {task_name}', color='g')
 
-    ax.set_yticks(range(len(schedule)))
-    ax.set_yticklabels(task_labels)
     ax.set_xlabel('Time')
     ax.set_ylabel('Tasks')
-    ax.set_title('EDF Scheduler Visualization')
+    ax.set_title('Task Schedule Visualization')
+    ax.legend()
 
     plt.show()
